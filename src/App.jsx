@@ -11,7 +11,8 @@ export default function App() {
       setInput(Math.max(eval(input)));
       setJustEvaluated(true);
     } else if (["+", "-", "*", "/", "."].includes(value)) {
-      setInput((prev) => (prev > 0 ? prev + value : 0 + value));
+      setInput((prev) => prev + value);
+      // setInput(Math.max(eval(input)));
       setJustEvaluated(false);
     } else {
       if (justEvaluated) {
@@ -45,15 +46,15 @@ export default function App() {
   ];
   return (
     <div class="flex items-center justify-center min-h-screen">
-      <div class="bg-orange-400 text-white p-8 rounded-2xl">
-        <div className="bg-yellow-100 grid grid-rows-1 gap-2 mb-2 p-1 text-black font-semibold text-4xl text-right">
+      <div class="bg-gray-700 text-white p-8 rounded-2xl">
+        <div className="w-70 text-4xl font-semibold bg-yellow-100 border border-gray-300 rounded grid grid-rows-1 items-center justify-end gap-2 mb-2 overflow-x-auto overflow-y-hidden hide-scrollbar text-black text-right direction-rtl">
           {input || "0"}
         </div>
         <div className="grid grid-cols-4 gap-2">
           {buttons.map((b) => (
             <button
               onClick={() => handleClick(b)}
-              className={`bg-gray-200 hover:bg-gray-300 text-xl font-medium w-16 h-16 
+              className={`bg-gray-400 hover:bg-gray-300 text-xl font-medium w-16 h-16 
               rounded shadow-sm flex items-center justify-center`}
             >
               {b}
